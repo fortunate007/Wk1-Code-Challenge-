@@ -1,0 +1,20 @@
+# Query: 
+# ContextLines: 1
+
+function netSalaryCalculator(basicSalary, benefits) {
+    const grossSalary = basicSalary + benefits;
+
+    // Simplified calculations. Replace these with actual rates from the provided links.
+    const payeeTax = grossSalary * 0.2; // Example tax rate
+    const nhifDeduction = 1500; // Example fixed deduction
+    const nssfDeduction = 200; // Example fixed deduction
+
+    const netSalary = grossSalary - (payeeTax + nhifDeduction + nssfDeduction);
+    return {
+        grossSalary: grossSalary,
+        payeeTax: payeeTax,
+        nhifDeduction: nhifDeduction,
+        nssfDeduction: nssfDeduction,
+        netSalary: netSalary
+    };
+}

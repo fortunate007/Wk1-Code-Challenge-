@@ -20,5 +20,5 @@ function getStudentGrade() {
     }
 }
 
-// Uncomment the line below to test the function in a browser environment
+
 // console.log(getStudentGrade());

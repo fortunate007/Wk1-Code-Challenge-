@@ -1,20 +1,57 @@
 # Query: 
 # ContextLines: 1
 
-function netSalaryCalculator(basicSalary, benefits) {
+ffunction calculateNetSalary() {
+    const basicSalary = parseFloat(prompt("Enter basic salary: "));
+    const benefits = parseFloat(prompt("Enter benefits: "));
+
     const grossSalary = basicSalary + benefits;
 
-    // Simplified calculations. Replace these with actual rates from the provided links.
-    const payeeTax = grossSalary * 0.2; // Example tax rate
-    const nhifDeduction = 1500; // Example fixed deduction
-    const nssfDeduction = 200; // Example fixed deduction
+    // Define tax, NHIF, and NSSF calculations
+    function calculateTax(gross) {
+        // Simplified tax calculation
+        if (gross <= 24000) return gross * 0.1;
+        if (gross <= 32333) return gross * 0.25;
+        return gross * 0.3;
+    }
 
-    const netSalary = grossSalary - (payeeTax + nhifDeduction + nssfDeduction);
-    return {
-        grossSalary: grossSalary,
-        payeeTax: payeeTax,
-        nhifDeduction: nhifDeduction,
-        nssfDeduction: nssfDeduction,
-        netSalary: netSalary
-    };
+    function calculateNHIF(gross) {
+        // NHIF rates
+        if (gross <= 5999) return 150;
+        if (gross <= 7999) return 300;
+        if (gross <= 11999) return 400;
+        if (gross <= 14999) return 500;
+        if (gross <= 19999) return 600;
+        if (gross <= 24999) return 750;
+        if (gross <= 29999) return 850;
+        if (gross <= 34999) return 900;
+        if (gross <= 39999) return 950;
+        if (gross <= 44999) return 1000;
+        if (gross <= 49999) return 1100;
+        if (gross <= 59999) return 1200;
+        if (gross <= 69999) return 1300;
+        if (gross <= 79999) return 1400;
+        if (gross <= 89999) return 1500;
+        if (gross <= 99999) return 1600;
+        return 1700;
+    }
+
+    function calculateNSSF(gross) {
+        // NSSF is 6% of gross salary but capped at 1080
+        return Math.min(gross * 0.06, 1080);
+    }
+
+    const tax = calculateTax(grossSalary);
+    const nhif = calculateNHIF(grossSalary);
+    const nssf = calculateNSSF(grossSalary);
+
+    const netSalary = grossSalary - tax - nhif - nssf;
+
+    console.log(`Gross Salary: ${grossSalary}`);
+    console.log(`Tax: ${tax}`);
+    console.log(`NHIF: ${nhif}`);
+    console.log(`NSSF: ${nssf}`);
+    console.log(`Net Salary: ${netSalary}`);
 }
+
+calculateNetSalary();

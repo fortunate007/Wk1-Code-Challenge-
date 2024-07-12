@@ -1,18 +1,54 @@
-# Query: 
+# Query:  
 # ContextLines: 1
 
-function speedDetector(speed) {
+1function speedDetector() {
+    const speed = parseInt(prompt("Enter car speed: "), 10);
     const speedLimit = 70;
-    const kmPerDemeritPoint = 5;
-    
-    if (speed <= speedLimit) {
-        return "Ok";
+    const demeritPointsThreshold = 12;
+
+    if (speed < speedLimit) {
+        console.log("Ok");
     } else {
-        const demeritPoints = Math.floor((speed - speedLimit) / kmPerDemeritPoint);
-        if (demeritPoints > 12) {
-            return "License suspended";
+        const demeritPoints = Math.floor((speed - speedLimit) / 5);
+        if (demeritPoints > demeritPointsThreshold) {
+            console.log("License suspended");
         } else {
-            return `Points: ${demeritPoints}`;
+            console.log(`Points: ${demeritPoints}`);
         }
     }
 }
+
+speedDetector();
+69 results - 2 files
+
+package-lock.json:
+  1  {
+  2:   "name": "Wk1-Code-Challenge-",
+  3:   "lockfileVersion": 3,
+  4:   "requires": true,
+  5:   "packages": {}
+  6  }
+
+Untitled-1.js:
+   1  
+   2: function getStudentGrade() {
+   3:     let marks = prompt("Enter student marks (between 0 and 100):");
+   4:     marks = parseInt(marks);
+   5  
+   6:     if (marks > 100 || marks < 0 || isNaN(marks)) {
+   7:         return "Invalid marks entered. Please enter a value between 0 and 100.";
+   8:     }
+   9  
+  10:     if (marks > 79) {
+  11:         return "Grade: A";
+  12:     } else if (marks >= 60) {
+  13:         return "Grade: B";
+  14:     } else if (marks >= 50) {
+  15:         return "Grade: C";
+  16:     } else if (marks >= 40) {
+  17:         return "Grade: D";
+  18:     } else {
+  19:         return "Grade: E";
+  20:     }
+  21: // console.log(getStudentGrade());
+  22  
